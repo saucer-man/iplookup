@@ -5,8 +5,9 @@ import (
 	"context"
 	"fmt"
 	"io/ioutil"
-	"iplookup/subscraping"
 	"regexp"
+
+	"github.com/saucer-man/iplookup/subscraping"
 )
 
 // Source is the passive scraping agent

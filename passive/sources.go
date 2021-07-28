@@ -1,22 +1,22 @@
 package passive
 
 import (
-	"iplookup/subscraping"
-	"iplookup/subscraping/sources/aizhan"
-	"iplookup/subscraping/sources/bugscaner"
-	"iplookup/subscraping/sources/c99"
-	"iplookup/subscraping/sources/chinaz"
-	"iplookup/subscraping/sources/dnsgrep"
-	"iplookup/subscraping/sources/dnslytics"
-	"iplookup/subscraping/sources/domaintools"
-	"iplookup/subscraping/sources/hackertarget"
-	"iplookup/subscraping/sources/ip138"
-	"iplookup/subscraping/sources/omnisint"
-	"iplookup/subscraping/sources/rapiddns"
-	"iplookup/subscraping/sources/securitytrails"
-	"iplookup/subscraping/sources/viewdns"
-	"iplookup/subscraping/sources/webscan"
-	"iplookup/subscraping/sources/yougetsignal"
+	"github.com/saucer-man/iplookup/subscraping"
+	"github.com/saucer-man/iplookup/subscraping/sources/aizhan"
+	"github.com/saucer-man/iplookup/subscraping/sources/bugscaner"
+	"github.com/saucer-man/iplookup/subscraping/sources/c99"
+	"github.com/saucer-man/iplookup/subscraping/sources/chinaz"
+	"github.com/saucer-man/iplookup/subscraping/sources/dnsgrep"
+	"github.com/saucer-man/iplookup/subscraping/sources/dnslytics"
+	"github.com/saucer-man/iplookup/subscraping/sources/domaintools"
+	"github.com/saucer-man/iplookup/subscraping/sources/hackertarget"
+	"github.com/saucer-man/iplookup/subscraping/sources/ip138"
+	"github.com/saucer-man/iplookup/subscraping/sources/omnisint"
+	"github.com/saucer-man/iplookup/subscraping/sources/rapiddns"
+	"github.com/saucer-man/iplookup/subscraping/sources/securitytrails"
+	"github.com/saucer-man/iplookup/subscraping/sources/viewdns"
+	"github.com/saucer-man/iplookup/subscraping/sources/webscan"
+	"github.com/saucer-man/iplookup/subscraping/sources/yougetsignal"
 )
 
 // DefaultSources contains the list of fast sources used by default.

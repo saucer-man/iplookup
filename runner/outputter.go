@@ -4,10 +4,11 @@ import (
 	"bufio"
 	"errors"
 	"io"
-	"iplookup/subscraping"
 	"os"
 	"path/filepath"
 	"strings"
+
+	"github.com/saucer-man/iplookup/subscraping"
 
 	jsoniter "github.com/json-iterator/go"
 )

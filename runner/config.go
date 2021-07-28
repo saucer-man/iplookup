@@ -5,8 +5,8 @@ import (
 	"os"
 	"time"
 
+	"github.com/saucer-man/iplookup/subscraping"
 	"gopkg.in/yaml.v3"
-	"iplookup/subscraping"
 )
 
 // MultipleKeyPartsLength is the max length for multiple keys

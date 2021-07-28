@@ -4,9 +4,10 @@ import (
 	"context"
 
 	// Attempts to increase the OS file descriptors - Fail silently
+	"github.com/saucer-man/iplookup/runner"
+
 	_ "github.com/projectdiscovery/fdmax/autofdmax"
 	"github.com/projectdiscovery/gologger"
-	"iplookup/runner"
 )
 
 func main() {
@@ -22,4 +23,12 @@ func main() {
 	if err != nil {
 		gologger.Fatal().Msgf("Could not run enumeration: %s\n", err)
 	}
+}
+
+func LookUp(ip string) {
+	options := runner.Options{
+		Ip: ip,
+	}
+	newRunner, _ := runner.NewRunner(&options)
+	newRunner.RunEnumeration(context.Background())
 }

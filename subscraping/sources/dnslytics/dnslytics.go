@@ -4,9 +4,10 @@ import (
 	"bytes"
 	"context"
 	"io/ioutil"
-	"iplookup/subscraping"
 	"regexp"
 	"strings"
+
+	"github.com/saucer-man/iplookup/subscraping"
 )
 
 type Source struct{}

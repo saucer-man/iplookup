@@ -3,7 +3,7 @@ package runner
 import (
 	"strings"
 
-	"iplookup/passive"
+	"github.com/saucer-man/iplookup/passive"
 )
 
 // initializePassiveEngine creates the passive engine and loads sources etc

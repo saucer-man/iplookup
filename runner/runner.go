@@ -7,8 +7,9 @@ import (
 	"os"
 	"path"
 
+	"github.com/saucer-man/iplookup/passive"
+
 	"github.com/projectdiscovery/gologger"
-	"iplookup/passive"
 )
 
 // Runner is an instance of the subdomain enumeration

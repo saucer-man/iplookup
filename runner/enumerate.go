@@ -6,16 +6,14 @@ import (
 	"sync"
 	"time"
 
-	"github.com/hako/durafmt"
 	"github.com/projectdiscovery/gologger"
-	"iplookup/subscraping"
+	"github.com/saucer-man/iplookup/subscraping"
 )
 
 const maxNumCount = 2
 
 // EnumerateSingleDomain performs subdomain enumeration against a single domain
 func (r *Runner) EnumerateSingleDomain(ctx context.Context, ip string, outputs []io.Writer) error { //处理器函数处理各个接口返回结果， 统一处理结果
-	gologger.Info().Msgf("Enumerating IP for %s\n", ip)
 
 	// Get the API keys for sources from the configuration
 	// and also create the active resolving engine for the domain.
@@ -24,7 +22,7 @@ func (r *Runner) EnumerateSingleDomain(ctx context.Context, ip string, outputs [
 	proxy := r.options.YAMLConfig.GetProxy() //获取proxy
 
 	// Run the passive subdomain enumeration
-	now := time.Now()
+	// now := time.Now()
 	passiveResults := r.passiveAgent.EnumerateIp(ip, &keys, &proxy, r.options.Timeout, time.Duration(r.options.MaxEnumerationTime)*time.Minute) //
 
 	wg := &sync.WaitGroup{}
@@ -99,9 +97,9 @@ func (r *Runner) EnumerateSingleDomain(ctx context.Context, ip string, outputs [
 	}
 
 	// Show found subdomain count in any case.
-	duration := durafmt.Parse(time.Since(now)).LimitFirstN(maxNumCount).String()
+	// duration := durafmt.Parse(time.Since(now)).LimitFirstN(maxNumCount).String()
 
-	gologger.Info().Msgf("Found %d subdomains for %s in %s\n", len(uniqueMap), ip, duration) // Todo   run End
+	// gologger.Info().Msgf("Found %d subdomains for %s in %s\n", len(uniqueMap), ip, duration) // Todo   run End
 
 	return nil
 }

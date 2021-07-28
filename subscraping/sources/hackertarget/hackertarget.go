@@ -7,7 +7,7 @@ import (
 	"fmt"
 	"regexp"
 
-	"iplookup/subscraping"
+	"github.com/saucer-man/iplookup/subscraping"
 )
 
 // Source is the passive scraping agent

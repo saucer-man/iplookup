@@ -3,8 +3,9 @@ package dnsgrep_test
 import (
 	"context"
 	"fmt"
+
 	jsoniter "github.com/json-iterator/go"
-	"iplookup/subscraping"
+	"github.com/saucer-man/iplookup/subscraping"
 )
 
 type dsngrepResponse struct {

@@ -4,11 +4,12 @@ import (
 	"bytes"
 	"context"
 	"fmt"
-	jsoniter "github.com/json-iterator/go"
 	"io/ioutil"
-	"iplookup/subscraping"
 	"regexp"
 	"strings"
+
+	jsoniter "github.com/json-iterator/go"
+	"github.com/saucer-man/iplookup/subscraping"
 )
 
 type securityTrailsResponse struct {

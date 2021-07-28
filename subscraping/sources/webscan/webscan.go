@@ -3,8 +3,9 @@ package webscan
 import (
 	"context"
 	"fmt"
+
 	jsoniter "github.com/json-iterator/go"
-	"iplookup/subscraping"
+	"github.com/saucer-man/iplookup/subscraping"
 )
 
 type webscanResponse []struct {

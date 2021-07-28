@@ -7,7 +7,7 @@ import (
 	"time"
 
 	"github.com/projectdiscovery/gologger"
-	"iplookup/subscraping"
+	"github.com/saucer-man/iplookup/subscraping"
 )
 
 // EnumerateSubdomains enumerates all the subdomains for a given domain

@@ -2,7 +2,7 @@ package runner
 
 import (
 	"github.com/projectdiscovery/gologger"
-	"iplookup/passive"
+	"github.com/saucer-man/iplookup/passive"
 )
 
 const banner = `

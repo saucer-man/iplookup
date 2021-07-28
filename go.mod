@@ -1,4 +1,4 @@
-module iplookup
+module github.com/saucer-man/iplookup
 
 go 1.16
 

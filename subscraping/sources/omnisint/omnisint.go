@@ -3,8 +3,9 @@ package omnisint
 import (
 	"context"
 	"fmt"
+
 	jsoniter "github.com/json-iterator/go"
-	"iplookup/subscraping"
+	"github.com/saucer-man/iplookup/subscraping"
 )
 
 type omnisintResponse []string

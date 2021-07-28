@@ -5,10 +5,11 @@ import (
 	"context"
 	"encoding/base64"
 	"fmt"
-	jsoniter "github.com/json-iterator/go"
 	"io/ioutil"
-	"iplookup/subscraping"
 	"strings"
+
+	jsoniter "github.com/json-iterator/go"
+	"github.com/saucer-man/iplookup/subscraping"
 )
 
 type chinaResponse struct {

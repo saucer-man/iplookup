@@ -3,8 +3,9 @@ package c99
 import (
 	"context"
 	"fmt"
+
 	jsoniter "github.com/json-iterator/go"
-	"iplookup/subscraping"
+	"github.com/saucer-man/iplookup/subscraping"
 )
 
 type c99Response struct {
