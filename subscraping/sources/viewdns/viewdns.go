@@ -30,7 +30,6 @@ func (s *Source) Run(ctx context.Context, ip string, session *subscraping.Sessio
 
 		body, err := ioutil.ReadAll(resp.Body)
 		if err != nil {
-			fmt.Println(err)
 			return
 		}
 		//fmt.Println(string(body))

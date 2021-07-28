@@ -9,8 +9,6 @@ import (
 	"net/http"
 	"net/url"
 	"time"
-
-	"github.com/projectdiscovery/gologger"
 )
 
 // NewSession creates a new session object for a domain
@@ -114,7 +112,7 @@ func (s *Session) DiscardHTTPResponse(response *http.Response) {
 	if response != nil {
 		_, err := io.Copy(ioutil.Discard, response.Body)
 		if err != nil {
-			gologger.Warning().Msgf("Could not discard response body: %s\n", err)
+
 			return
 		}
 		response.Body.Close()

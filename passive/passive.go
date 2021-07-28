@@ -6,7 +6,6 @@ import (
 	"sync"
 	"time"
 
-	"github.com/projectdiscovery/gologger"
 	"github.com/saucer-man/iplookup/subscraping"
 )
 
@@ -49,10 +48,6 @@ func (a *Agent) EnumerateIp(ip string, keys *subscraping.Keys, proxy *subscrapin
 
 		}
 		wg.Wait()
-
-		for source, data := range timeTaken {
-			gologger.Verbose().Label(source).Msg(data)
-		}
 
 		close(results)
 		cancel()

@@ -6,7 +6,6 @@ import (
 	"sync"
 	"time"
 
-	"github.com/projectdiscovery/gologger"
 	"github.com/saucer-man/iplookup/subscraping"
 )
 
@@ -35,8 +34,8 @@ func (r *Runner) EnumerateSingleDomain(ctx context.Context, ip string, outputs [
 	go func() {
 		for result := range passiveResults { // 遍历查询结果
 			switch result.Type {
-			case subscraping.Error: // error for api
-				gologger.Warning().Msgf("Could not run source %s: %s\n", result.Source, result.Error)
+			// case subscraping.Error: // error for api
+
 			case subscraping.Subdomain:
 				// Validate the subdomain found and remove wildcards from
 				//if !strings.HasSuffix(result.Value, "."+ip) {
@@ -51,11 +50,6 @@ func (r *Runner) EnumerateSingleDomain(ctx context.Context, ip string, outputs [
 				}
 				//fmt.Printf("%v",result)
 
-				// Log the verbose message about the found subdomain per source
-				if _, ok := sourceMap[subdomain][result.Source]; !ok {
-					gologger.Verbose().Label(result.Source).Msg(subdomain)
-				}
-
 				sourceMap[subdomain][result.Source] = struct{}{}
 
 				// Check if the subdomain is a duplicate. If not,
@@ -65,14 +59,13 @@ func (r *Runner) EnumerateSingleDomain(ctx context.Context, ip string, outputs [
 				}
 
 				hostEntry := subscraping.HostEntry{Host: subdomain, Source: result.Source}
-				//fmt.Println(hostEntry.Host,hostEntry.Source)
+				// fmt.Println(hostEntry.Host, hostEntry.Source)
 
 				if len(uniqueMap) >= r.options.Threshold {
 					break
 				}
 				uniqueMap[subdomain] = hostEntry
 
-				//gologger.Verbose().Label(result.Source).Msg(result.Count)
 			}
 		}
 		wg.Done()
@@ -91,15 +84,9 @@ func (r *Runner) EnumerateSingleDomain(ctx context.Context, ip string, outputs [
 	for _, w := range outputs {
 		err = outputter.WriteHost(uniqueMap, w)
 		if err != nil {
-			gologger.Error().Msgf("Could not verbose results for %s: %s\n", ip, err)
+
 			return err
 		}
 	}
-
-	// Show found subdomain count in any case.
-	// duration := durafmt.Parse(time.Since(now)).LimitFirstN(maxNumCount).String()
-
-	// gologger.Info().Msgf("Found %d subdomains for %s in %s\n", len(uniqueMap), ip, duration) // Todo   run End
-
 	return nil
 }

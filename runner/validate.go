@@ -2,10 +2,6 @@ package runner
 
 import (
 	"errors"
-
-	"github.com/projectdiscovery/gologger"
-	"github.com/projectdiscovery/gologger/formatter"
-	"github.com/projectdiscovery/gologger/levels"
 )
 
 // validateOptions validates the configuration options passed
@@ -34,13 +30,13 @@ func (options *Options) validateOptions() error {
 // configureOutput configures the output on theS screen
 func (options *Options) configureOutput() {
 	// If the user desires verbose output, show verbose output
-	if options.Verbose {
-		gologger.DefaultLogger.SetMaxLevel(levels.LevelVerbose)
-	}
-	if options.NoColor {
-		gologger.DefaultLogger.SetFormatter(formatter.NewCLI(true))
-	}
-	if options.Silent {
-		gologger.DefaultLogger.SetMaxLevel(levels.LevelSilent)
-	}
+	// if options.Verbose {
+	// 	gologger.DefaultLogger.SetMaxLevel(levels.LevelVerbose)
+	// }
+	// if options.NoColor {
+	// 	gologger.DefaultLogger.SetFormatter(formatter.NewCLI(true))
+	// }
+	// if options.Silent {
+	// 	gologger.DefaultLogger.SetMaxLevel(levels.LevelSilent)
+	// }
 }

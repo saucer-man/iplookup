@@ -5,11 +5,8 @@ import (
 	"context"
 	"io"
 	"os"
-	"path"
 
 	"github.com/saucer-man/iplookup/passive"
-
-	"github.com/projectdiscovery/gologger"
 )
 
 // Runner is an instance of the subdomain enumeration
@@ -36,18 +33,6 @@ func (r *Runner) RunEnumeration(ctx context.Context) error {
 
 	// Check if only a single domain is sent as input. Process the domain now.
 	if r.options.Ip != "" {
-		// If output file specified, create file
-		if r.options.OutputFile != "" {
-			outputter := NewOutputter(r.options.JSON)
-			file, err := outputter.createFile(r.options.OutputFile, false)
-			if err != nil {
-				gologger.Error().Msgf("Could not create file %s for %s: %s\n", r.options.OutputFile, r.options.Ip, err)
-				return err
-			}
-			defer file.Close()
-
-			outputs = append(outputs, file)
-		}
 
 		return r.EnumerateSingleDomain(ctx, r.options.Ip, outputs)
 	}
@@ -81,42 +66,8 @@ func (r *Runner) EnumerateMultipleDomains(ctx context.Context, reader io.Reader,
 		}
 
 		var err error
-		var file *os.File
-		// If the user has specified an output file, use that output file instead
-		// of creating a new output file for each domain. Else create a new file
-		// for each domain in the directory.
-		if r.options.OutputFile != "" {
-			outputter := NewOutputter(r.options.JSON)
-			file, err = outputter.createFile(r.options.OutputFile, true)
-			if err != nil {
-				gologger.Error().Msgf("Could not create file %s for %s: %s\n", r.options.OutputFile, r.options.Ip, err)
-				return err
-			}
 
-			err = r.EnumerateSingleDomain(ctx, ip, append(outputs, file)) // start
-
-			file.Close()
-		} else if r.options.OutputDirectory != "" {
-			outputFile := path.Join(r.options.OutputDirectory, ip)
-			if r.options.JSON {
-				outputFile += ".json"
-			} else {
-				outputFile += ".txt"
-			}
-
-			outputter := NewOutputter(r.options.JSON)
-			file, err = outputter.createFile(outputFile, false)
-			if err != nil {
-				gologger.Error().Msgf("Could not create file %s for %s: %s\n", r.options.OutputFile, r.options.Ip, err)
-				return err
-			}
-
-			err = r.EnumerateSingleDomain(ctx, ip, append(outputs, file))
-
-			file.Close()
-		} else {
-			err = r.EnumerateSingleDomain(ctx, ip, outputs)
-		}
+		err = r.EnumerateSingleDomain(ctx, ip, outputs)
 		if err != nil {
 			return err
 		}
